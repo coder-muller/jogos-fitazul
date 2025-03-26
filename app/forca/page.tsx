@@ -5,7 +5,35 @@ import Link from "next/link";
 import { useState } from "react";
 
 // Lista de palavras relacionadas a postos de combustíveis
-const words = ["gasolina", "etanol", "diesel", "biodiesel", "combustivel", "abastecer", "posto", "tanque", "Fitazul", "filtro"];
+const words = [
+    "gasolina",
+    "etanol",
+    "diesel",
+    "biodiesel",
+    "combustivel",
+    "abastecer",
+    "posto",
+    "tanque",
+    "fitazul",
+    "filtro",
+    "reservatorio",   // Reservatório de combustível
+    "octano",         // Octano, um componente da gasolina
+    "etanol",         // Etanol, um tipo de combustível
+    "diesel",         // Diesel, outro tipo de combustível
+    "aditivo",        // Aditivos para combustível
+    "caminhao",       // Caminhão, veículo que utiliza combustível
+    "carro",          // Carro, veículo que utiliza combustível
+    "abastecimento",  // Ato de abastecer
+    "distribuidora",  // Distribuidora de combustíveis
+    "tanque",         // Tanque de combustível
+    "pneu",           // Pneus, que podem ser relacionados a veículos
+    "manutencao",     // Manutenção de veículos
+    "veiculo",        // Veículo em geral
+    "conveniencia",   // Loja de conveniência em postos
+    "servico",        // Serviços oferecidos em postos
+    "lavagem",        // Lavagem de veículos
+    "troca",          // Troca de óleo ou outros serviços
+];
 const randomWord = words[Math.floor(Math.random() * words.length)];
 
 export default function Forca() {
