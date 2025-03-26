@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 const images = ["🚗", "⛽", "🛠️", "🔥", "💰", "⚡"];
 const shuffledCards = [...images, ...images].sort(() => Math.random() - 0.5);
 
@@ -25,6 +25,8 @@ export default function MemoryGame() {
   }, [timeLeft, matched, gameStarted]);
 
   const handleCardClick = (index: number) => {
+    if (gameOver) return;
+
     if (selected.length < 2 && !selected.includes(index) && !matched.includes(index)) {
       const newSelected = [...selected, index];
       setSelected(newSelected);
@@ -37,8 +39,10 @@ export default function MemoryGame() {
         const [first, second] = newSelected;
         if (cards[first].value === cards[second].value) {
           setMatched([...matched, first, second]);
+          setSelected([]);
+        } else {
+          setTimeout(() => setSelected([]), 1000);
         }
-        setTimeout(() => setSelected([]), 1000);
       }
     }
   };
@@ -66,6 +70,7 @@ export default function MemoryGame() {
             className="w-20 h-20 flex items-center justify-center bg-[#FED501] text-3xl font-bold rounded-lg cursor-pointer shadow-md"
             onClick={() => handleCardClick(index)}
             animate={{ rotateY: selected.includes(index) || matched.includes(index) ? 0 : 180 }}
+            initial={{ rotateY: 180 }}
           >
             {(selected.includes(index) || matched.includes(index)) ? card.value : "?"}
           </motion.div>
